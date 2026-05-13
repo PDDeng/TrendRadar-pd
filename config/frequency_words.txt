@@ -231,86 +231,274 @@
 /(?<![a-zA-Z])ai(?![a-zA-Z])/
 人工智能
 
-//  🔴 AI基础设施 · 光通信产业链
-// 光模块（CPO/800G/1.6T/3.2T）
+#   📊 全球核心股指
+# 美股三大指数
+/S&P 500|S&P500|标普500|标普 500|SPX|\bSPY\b/ => 标普500
+/Nasdaq|纳斯达克|纳指|IXIC|\bQQQ\b|Composite Index/ => 纳斯达克
+/Dow Jones|道琼斯|道指|DJIA|\bDIA\b/ => 道琼斯
+
+# 费城半导体指数（重点）
+/Philadelphia Semiconductor|费城半导体|SOX|SOXX|\bSMH\b|Philly Semi/ => 费城半导体指数
+
+# 美股波动率/恐慌指数
+/\bVIX\b|恐慌指数|波动率指数|CBOE Volatility/ => VIX恐慌指数
+
+# 日本
+/日经|Nikkei|日经225|Nikkei 225|日经指数|\bN225\b/ => 日经225
+/东证|TOPIX|东京证交所/ => 东证TOPIX
+
+# 韩国
+/韩国综合|KOSPI|Korea Composite|코스피/ => 韩国KOSPI
+/KOSDAQ|韩国创业|코스닥/ => 韩国KOSDAQ
+
+# 中国香港
+/恒生指数|恒指|HSI|Hang Seng Index/ => 恒生指数
+/恒生科技|HSTECH|Hang Seng Tech/ => 恒生科技指数
+/国企指数|H股指数|HSCEI/ => 国企指数
+
+# 欧洲
+/DAX|德国DAX|法兰克福|Frankfurter/ => 德国DAX
+/CAC 40|CAC40|法国CAC/ => 法国CAC40
+/FTSE|富时100|伦敦|London Stock Exchange/ => 富时100
+/STOXX|欧洲斯托克|Euro Stoxx/ => 欧洲斯托克
+
+# 台湾/东南亚
+/台湾加权|台股|TWSE|加权指数|^TWII/ => 台股加权指数
+/新加坡|STI|Straits Times Index/ => 新加坡STI
+
+
+
+#   💹 全球核心个股与机构
+# 英伟达（已有，补充英文变体）
+/英伟达|黄仁勋|\bNVIDIA\b|\bNVDA\b|\bGeForce\b|\bRTX\b|\bCUDA\b|\bJensen Huang\b|Blackwell|GB200|GB300|Rubin|NVLink|InfiniBand/ => 英伟达
+
+# 台积电
+/台积电|台湾积电|张忠谋|魏哲家|\bTSMC\b|Taiwan Semiconductor|CoWoS|SoIC|N3|N2|埃米制程/ => 台积电
+
+# 博通（AI定制芯片/ASIC）
+/博通|陈福阳|\bBroadcom\b|\bAVGO\b|定制芯片|ASIC|XPU/ => 博通
+
+# AMD
+/\bAMD\b|苏姿丰|Lisa Su|Instinct|MI300|MI350|ROCm|Radeon/ => AMD
+
+# 英特尔
+/\bIntel\b|英特尔|帕特基辛格|Pat Gelsinger|Gaudi|Xeon|酷睿|至强/ => 英特尔
+
+# 阿斯麦（光刻机）
+/阿斯麦|\bASML\b|光刻机|EUV|DUV|High-NA|Peter Wennink/ => 阿斯麦
+
+# 应用材料/泛林/科磊（半导体设备）
+/Applied Materials|应用材料|\bAMAT\b/ => 应用材料
+/Lam Research|泛林|\bLRCX\b/ => 泛林半导体
+/KLA|科磊|\bKLAC\b/ => 科磊
+
+# 谷歌/Alphabet
+/谷歌|Alphabet|\bGoogle\b|\bGOOGL\b|\bGOOG\b|Gemini|TPU|DeepMind|Waymo|Sundar Pichai/ => 谷歌Alphabet
+
+# Meta
+/\bMeta\b|扎克伯格|Zuckerberg|\bFacebook\b|\bInstagram\b|\bWhatsApp\b|Llama|Ray-Ban智能眼镜|Orion眼镜/ => Meta
+
+# 微软
+/微软|\bMicrosoft\b|纳德拉|Satya Nadella|\bMSFT\b|Azure|Copilot|OpenAI投资|Bing AI/ => 微软
+
+# 苹果
+/苹果|\bApple\b|\bAAPL\b|库克|Tim Cook|iPhone|Vision Pro|Apple Silicon|M系列芯片/ => 苹果
+
+# 亚马逊/AWS
+/亚马逊|\bAmazon\b|\bAMZN\b|\bAWS\b|Trainium|Inferentia|贝佐斯|Bezos|Andy Jassy/ => 亚马逊AWS
+
+# 光模块/光通信（北美）
+/Coherent|II-VI|\bLITE\b|Lumentum|\bLITE-ON\b|Ciena|Marvell光通信/ => 北美光通信龙头
+
+# 存储三巨头
+/美光|Micron|\bMU\b|HBM3E/ => 美光
+/三星|Samsung|三星电子|李在镕|HBM3|NAND|DRAM/ => 三星电子
+/海力士|SK Hynix|\bSKHY\b|HBM4|广大半导体/ => SK海力士
+
+# 闪迪/西数
+/闪迪|\bSanDisk\b|西部数据|Western Digital|\bWDC\b/ => 闪迪西数
+
+# 高通
+/高通|\bQualcomm\b|\bQCOM\b|骁龙|Snapdragon|安升/ => 高通
+
+# ARM
+/\bARM\b|软银ARM|Arm Holdings|\bARMH\b|指令集架构/ => ARM
+
+# 软银
+/软银|孙正义|\bSoftBank\b|愿景基金|Vision Fund/ => 软银孙正义
+
+# 特斯拉（已有，补充）
+/特斯拉|马斯克|\bTesla\b|\bTSLA\b|\bElon Musk\b|\bFSD\b|Dojo|超级计算机|Optimus机器人/ => 特斯拉
+
+# OpenAI
+/OpenAI|ChatGPT|奥特曼|Sam Altman|GPT-5|o3|Sora|Operator/ => OpenAI
+
+# 超微（AI服务器）
+/超微|Super Micro|\bSMCI\b|液冷服务器/ => 超微电脑SMCI
+
+# 巴菲特/伯克希尔
+/巴菲特|Buffett|伯克希尔|Berkshire|\bBRK\b|芒格|Charlie Munger/ => 巴菲特伯克希尔
+
+
+
+
+#    📰 国际财经媒体与信息源
+# 财经媒体（主流）
+/Bloomberg|彭博|\bbloomberg\.com\b/ => Bloomberg彭博
+/Reuters|路透|\breuters\.com\b/ => 路透社Reuters
+/Financial Times|\bFT\b|英国金融时报|\bft\.com\b/ => 金融时报FT
+/Wall Street Journal|\bWSJ\b|华尔街日报|\bwsj\.com\b/ => 华尔街日报WSJ
+/\bCNBC\b|\bcnbc\.com\b/ => CNBC
+/Barron's|巴伦周刊/ => 巴伦周刊
+/The Economist|经济学人/ => 经济学人
+/MarketWatch|\bmarketwatch\.com\b/ => MarketWatch
+/Seeking Alpha|\bseekingalpha\.com\b/ => Seeking Alpha
+/Zero Hedge|ZeroHedge|\bzerohedge\.com\b/ => ZeroHedge
+
+# 科技财经媒体
+/TechCrunch|\btechcrunch\.com\b/ => TechCrunch
+/The Information|\btheinformation\.com\b/ => The Information
+/Stratechery|Ben Thompson/ => Stratechery科技分析
+/Wired|\bwired\.com\b/ => Wired
+/The Verge|\btheverge\.com\b/ => The Verge
+/Ars Technica|\barstechnica\.com\b/ => Ars Technica
+/SemiAnalysis|Dylan Patel/ => SemiAnalysis芯片分析
+/Chip War|Chris Miller|芯片战争/ => 芯片战争
+
+# 亚洲财经媒体
+/日经新闻|Nikkei Asia|\bnikkei\.com\b|日本経済新聞/ => 日经亚洲
+/Korea Economic Daily|韩国经济日报/ => 韩国经济日报
+/南华早报|South China Morning Post|\bSCMP\b/ => 南华早报SCMP
+/财新|Caixin|\bcaixin\.com\b/ => 财新传媒
+
+# 数据终端与量化平台
+/TradingView|\btradingview\.com\b/ => TradingView
+/Yahoo Finance|雅虎财经|\bfinance\.yahoo\.com\b/ => Yahoo Finance
+/Investing\.com/ => Investing.com
+/Koyfin|\bkoyfin\.com\b/ => Koyfin
+/Morningstar|晨星|\bmorningstar\.com\b/ => 晨星Morningstar
+
+
+#   🧠 全球金融/科技圈大V与Newsletter
+# 宏观与投资大V（X/Twitter/Substack）
+/Cathie Wood|Cathie|ARK Invest|ARK Innovation|\bARKK\b/ => CathieWood方舟投资
+/Lyn Alden|lynalden\.com/ => LynAlden宏观分析
+/Howard Marks|橡树资本|Oaktree/ => HowardMarks橡树资本
+/Ray Dalio|瑞·达利欧|Bridgewater|桥水/ => RayDalio桥水
+/Stanley Druckenmiller|德鲁肯米勒/ => Druckenmiller
+/Bill Ackman|潘兴广场|Pershing Square/ => BillAckman
+/Dan Niles/ => DanNiles科技投资人
+
+# AI与科技圈大V
+/Andrej Karpathy|卡帕西/ => Karpathy前特斯拉AI
+/Yann LeCun|杨立昆/ => LeCun Meta首席AI科学家
+/Demis Hassabis|哈萨比斯|DeepMind/ => HasabisDeepmind
+/Sam Altman|奥特曼/ => SamAltman
+/Dario Amodei|达里奥|Anthropic/ => DarioAmodei
+/Ben Thompson|Stratechery/ => BenThompson科技战略
+/Dylan Patel|SemiAnalysis/ => DylanPatel半导体分析
+/Patrick Moorhead|Moor Insights/ => 摩尔洞察半导体
+/Ming-Chi Kuo|郭明錤/ => 郭明錤苹果分析师
+
+# 宏观与地缘大V
+/George Soros|索罗斯|量子基金/ => 索罗斯
+/Jeffrey Gundlach|冈拉克|DoubleLine/ => 冈拉克债券之王
+/Mohamed El-Erian|埃利安|PIMCO/ => ElErian太平洋投资
+
+
+#   🏦 全球央行与宏观事件
+/美联储|Fed|FOMC|Jerome Powell|鲍威尔|联邦基金利率|加息|降息|QT|QE|\bFederal Reserve\b/ => 美联储Fed
+/欧央行|ECB|Christine Lagarde|拉加德|欧元区利率/ => 欧洲央行ECB
+/日本央行|Bank of Japan|\bBoJ\b|植田和男|负利率|YCC|收益率曲线控制/ => 日本央行BoJ
+/韩国央行|Bank of Korea|\bBoK\b/ => 韩国央行BoK
+/中国人民银行|央行|LPR|MLF|存款准备金|降准|降息|逆回购/ => 人民银行
+/国际货币基金|IMF|世界银行|World Bank/ => IMF世界银行
+/CPI|通胀|通货膨胀|PCE|核心通胀|Inflation/ => 通胀数据
+/非农|Nonfarm Payroll|就业数据|失业率|Unemployment/ => 非农就业数据
+/关税|tariff|贸易战|trade war|出口管制|export control|实体清单|entity list/ => 贸易与关税
+
+
+
+#  🔴 AI基础设施 · 光通信产业链
+# 光模块（CPO/800G/1.6T/3.2T）
 /中际旭创|新易盛|天孚通信|光迅科技|华工科技|剑桥科技|太辰光|仕佳光子|协创数据|长盈通|烽火通信|亨通光电|永鼎股份|光电股份|世嘉科技|CPO|共封装光学|光模块|800G|1\.6T|3\.2T|NPO|LPO|AEC/ => CPO光模块
 
-// 光芯片（硅光/EML/VCSEL/磷化铟）
+# 光芯片（硅光/EML/VCSEL/磷化铟）
 /长光华芯|源杰科技|光库科技|三安光电|长飞光纤|云南锗业|天通股份|众合科技|长芯博创|莱特光电|硅光芯片|EML|VCSEL|DFB|铌酸锂|磷化铟|InP|法拉第旋转片/ => 光芯片
 
-// 光纤光缆
+# 光纤光缆
 /中天科技|通鼎互联|亨通光电|烽火通信|长飞光纤|永鼎股份|杭电股份|光纤涨价|光棒|预制棒|光纤出口/ => 光纤光缆
 
 
 
-//   🔴 AI基础设施 · PCB与材料产业链
-// PCB高端制造
+#   🔴 AI基础设施 · PCB与材料产业链
+# PCB高端制造
 /胜宏科技|深南电路|沪电股份|东山精密|鹏鼎控股|宏和科技|宝鼎科技|协和电子|超声电子|宏昌电子|景旺电子|生益科技|生益电子|兴森科技|PCB|印制电路板|HDI|IC载板|FCBGA|封装基板|高速PCB|覆铜板|CCL/ => PCB高端制造
 
-// 电子布/P布/石英布（PCB上游）
+# 电子布/P布/石英布（PCB上游）
 /宏和科技|中国巨石|东材科技|菲利华|电子布|玻纤布|P布|石英布|石英纤维布|电子级玻璃纤维|低介电|特种电子布|玻纤涨价|电子布涨价/ => 电子布石英布
 
-// PCB树脂与铜箔
+# PCB树脂与铜箔
 /生益科技|华正新材|宏昌电子|南亚新材|高速树脂|环氧树脂|铜箔|覆铜板材料/ => PCB覆铜板材料
 
 
-//   🔴 AI基础设施 · 液冷与散热
+#   🔴 AI基础设施 · 液冷与散热
 /英维克|三花智控|高澜股份|中科曙光|南风股份|液冷|冷板|CDU|快接头|浸没式冷却|液冷散热|液冷服务器|全液冷|Rubin|GB300|机柜液冷/ => 液冷散热
 
 
 
-//   🔴 AI基础设施 · 算力芯片与存储
-// AI算力芯片
+#   🔴 AI基础设施 · 算力芯片与存储
+# AI算力芯片
 /海光信息|寒武纪|龙芯中科|景嘉微|全志科技|瑞芯微|中微公司|北方华创|拓荆科技|壁仞|算力芯片|AI芯片|GPU|国产替代芯片|大基金|先进制程/ => AI算力芯片
 
-// HBM与先进封装
+# HBM与先进封装
 /长鑫存储|兆易创新|长电科技|通富微电|HBM|高带宽内存|CoWoS|先进封装|2\.5D封装|TSV|混合键合|Chiplet/ => HBM先进封装
 
-// AI服务器
+# AI服务器
 /浪潮信息|中科曙光|中兴通讯|紫光股份|AI服务器|智算中心|AIDC|万卡集群/ => AI服务器
 
 
 
-//   🔴 算电协同 · 电力新基建
-// 算电协同（核心政策主线）
+#   🔴 算电协同 · 电力新基建
+# 算电协同（核心政策主线）
 /算电协同|绿电直供|源网荷储|数能融合|电算协同|东数西算|绿电算力|算电协同工程|国家数据局/ => 算电协同
 
-// 特高压与智能电网
+# 特高压与智能电网
 /国电南瑞|特变电工|平高电气|中国西电|四方股份|思源电气|许继电气|金盘科技|双杰电气|安靠智电|特高压|柔性直流|HVDC|SST|固态变压器|换流阀|智能电网|变压器出海/ => 特高压智能电网
 
-// 电力出海（变压器/电缆出海）
+# 电力出海（变压器/电缆出海）
 /汉缆股份|远东股份|通光线缆|太阳电缆|通达股份|法尔胜|特变电工|金盘科技|变压器出口|电力设备出海|海外电网|欧美电网/ => 电力设备出海
 
-// 绿电与清洁能源运营
+# 绿电与清洁能源运营
 /长江电力|华能国际|中国核电|三峡能源|华电辽能|大唐发电|国电电力|绿发电力|华能水电|国投电力|绿电|清洁能源|绿证|碳中和|水电|核电运营/ => 绿电清洁能源
 
-// 储能
+# 储能
 /宁德时代|阳光电源|海博思创|亿纬锂能|南都电源|比亚迪储能|储能|固态电池|液流电池|虚拟电厂|源网荷储/ => 储能
 
 
-//   🔴 光伏产业链
-// 光伏组件与硅料
+#   🔴 光伏产业链
+# 光伏组件与硅料
 /隆基绿能|通威股份|协鑫科技|晶澳科技|天合光能|晶科能源|阿特斯|硅料|多晶硅|N型|TOPCon|HJT|钙钛矿|光伏组件|光伏出海|硅料收储|反内卷/ => 光伏组件硅料
 
-// 光伏设备与材料
+# 光伏设备与材料
 /迈为股份|帝尔激光|奥特维|金辰股份|光伏胶膜|光伏玻璃|铜电镀|0BB|光伏设备/ => 光伏设备材料
 
 
 
-//   🔴 核电与商业航天
-// 核电
+#   🔴 核电与商业航天
+# 核电
 /中国核电|中国广核|福能股份|中广核技|核电|核能|AP1000|华龙一号|核聚变|可控核聚变|小型核电|模块化反应堆/ => 核电核能
 
-// 商业航天
+# 商业航天
 /中国卫星|中国卫通|航天电子|天银星际|运载火箭|低轨卫星|星座组网|可复用火箭|商业航天|卫星互联网|太空光伏|6G卫星/ => 商业航天
 
 
 
-//   🔴 半导体国产替代
+#   🔴 半导体国产替代
 /中芯国际|华虹公司|北方华创|中微公司|拓荆科技|澜起科技|江丰电子|菲利华|新莱应材|光刻胶|电子特气|靶材|国产替代|大基金三期|半导体设备|EUV|洁净室/ => 半导体国产替代
 
 
-//   🔴 人形机器人
+#   🔴 人形机器人
 /三花智控|拓普集团|绿的谐波|双环传动|鸣志电器|柔顺关节|丝杠|空心杯|人形机器人|具身智能|Optimus|灵巧手|电机执行器/ => 人形机器人
 
 [芯片]
